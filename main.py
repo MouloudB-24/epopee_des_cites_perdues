@@ -40,6 +40,7 @@ class Player:
         self.health_points = health_points
         self.force = random.randint(1, 10)
         self.inventory = {}
+        self.explored_locations = set()
 
             
 def main():
@@ -126,7 +127,7 @@ def start_game() -> None:
             break
     
 
-def explore_location():
+def explore_location(player: Player, data: dict):
     """
     Explore un lieu du jeu.
     """
