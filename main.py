@@ -46,10 +46,10 @@ def main():
     """
     Affiche le menu principal
     """
-    console.print("[bold yellow]Bienvenue au jeu de l'Epopée des Cités Perdues[/bold yellow]\n")
+    console.print("[bold yellow]Bienvenue au jeu de l'Epopée des Cités Perdues[/bold yellow]")
     
     while True:        
-        console.print("[bold green]Menu de démarrage :[/bold green]")
+        console.print("[bold green]\nMenu principal :[/bold green]")
         console.print("     [cyan]1[cyan] - Afficher les règles du jeu")
         console.print("     [cyan]2[cyan] - Commencer une partie")
         console.print("     [cyan]3[cyan] - Quitter")
@@ -97,10 +97,54 @@ def start_game() -> None:
     """
     Commence une nouvelle partie du jeu.
     """
-    pass
+    data = load_game_data("data.json")
     
+    
+    name = Prompt.ask("[bold green]\nEntrez votre nom[/bold green]")
+    player = Player(name)
+    
+    while True:
+        console.print("[bold green]\nMenu du jeu :[/bold green]")
+        console.print("     [cyan]1[cyan] - Explorer un lieu")
+        console.print("     [cyan]2[cyan] - Interagir avec une personne")
+        console.print("     [cyan]3[cyan] - Afficher l'état du joueur")
+        console.print("     [cyan]4[cyan] - Retourner au menu principal")
+        
+        choice = ask_user_for_numeric_value(1, 4)
+        
+        if choice == 1:
+            explore_location()
+        
+        elif choice == 2:
+            speak_with()
+        
+        elif choice == 3:
+            show_player_state()
+        
+        elif choice == 4:
+            console.print("[yellow]Retour au menu principal[/yellow]")
+            break
     
 
+def explore_location():
+    """
+    Explore un lieu du jeu.
+    """
+    pass
+
+
+def speak_with():
+    """
+    Parler avec une personne.
+    """
+    pass
+
+
+def show_player_state():
+    """
+    Afficher l'état du joueur.
+    """
+    pass
 
 if __name__ == "__main__":
     main()
