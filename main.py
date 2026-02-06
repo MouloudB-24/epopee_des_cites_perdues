@@ -164,5 +164,17 @@ def show_player_state():
     """
     pass
 
+
+def combat(player: Player, force: int, choice: bool) -> str:
+    """
+    Gère le combat entre le joueur et son ennemi.
+    """
+    if choice:
+        if player.force >= force:
+            return "gagne"
+        return "perdu"
+    return "fuir"
+    
+
 if __name__ == "__main__":
     main()
