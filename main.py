@@ -139,6 +139,16 @@ def explore_location(player: Player, data: dict):
             i += 1
             console.print(f"    [yellow]{i} - {location['nom']}[/yellow]")
             unexplored_locations.append(location)
+    
+    if not unexplored_locations:
+        console.print("[bold yellow]\nBravo! Tu as exploré tous les lieux disponibles.[/bold yellow]")
+        console.print("[yellow]Retour au menu du jeu[yellow]")
+        return
+    
+    index = ask_user_for_numeric_value(1, len(unexplored_locations)) - 1
+    location = unexplored_locations[index]
+    console.print(f"[yellow]Nom : {location['nom']}[/yellow]")
+    console.print(f"[yellow]Description : {location['description']}[/yellow]")
 
 
 def speak_with():
