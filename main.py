@@ -97,11 +97,11 @@ def display_game_rules() -> None:
 def start_game() -> None:
     """
     Commence une nouvelle partie du jeu.
-    """
-    data = load_game_data("data.json")
-    
-    
+    """    
     name = Prompt.ask("[bold green]\nEntrez votre nom[/bold green]")
+    console.print(f"[yellow]Bonne change! {name}[/yellow]")
+    
+    data = load_game_data("data.json")
     player = Player(name)
     
     while True:
@@ -114,7 +114,7 @@ def start_game() -> None:
         choice = ask_user_for_numeric_value(1, 4)
         
         if choice == 1:
-            explore_location()
+            explore_location(player, data)
         
         elif choice == 2:
             speak_with()
@@ -131,7 +131,14 @@ def explore_location(player: Player, data: dict):
     """
     Explore un lieu du jeu.
     """
-    pass
+    console.print("[yellow]Lieux à explorer :[/yellow]")
+    i = 0
+    unexplored_locations = []
+    for location in data["lieux"]:
+        if location["nom"] not in player.explored_locations:
+            i += 1
+            console.print(f"    [yellow]{i} - {location['nom']}[/yellow]")
+            unexplored_locations.append(location)
 
 
 def speak_with():
