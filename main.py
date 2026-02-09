@@ -149,6 +149,38 @@ def explore_location(player: Player, data: dict):
     location = unexplored_locations[index]
     console.print(f"[yellow]Nom : {location['nom']}[/yellow]")
     console.print(f"[yellow]Description : {location['description']}[/yellow]")
+    
+    if location["ennemis"]:
+        console.print("[bold green]\nQuelle est votre décision :[/bold green]")
+        console.print("     [cyan]1 - Combattre[/cyan]")
+        console.print("     [cyan]2 - Fuir[/cyan]")
+        
+        choice = ask_user_for_numeric_value(1, 2)
+        
+        if choice == 1:
+            decision = True
+        else:
+            decision = False
+            
+        for personnage in data["personnages"]:
+            if personnage["nom"].lower() == location["ennemis"][0].lower():
+                force = 0
+                if personnage.get("force"):
+                    force = int(personnage["force"])
+            
+        res = combat(player, force, decision)
+        if res == "gagne":
+            console.print("[bold yellow]Bravo! Tu as vaincu ton ennemi.[/bold yellow]")
+            player.explored_locations.add(location["nom"])
+        elif res == "perdu":
+            console.print("[bold yellow]Dommage! Tu as perdu.[/bold yellow]")
+            return
+        elif res == "fuir":
+            console.print("[yellow]Sage décision![/yellow]")
+            return
+    else:
+        console.print("\n[bold yellow]Ce lieu est sans ennemi![/bold yellow]")
+            
 
 
 def speak_with():
