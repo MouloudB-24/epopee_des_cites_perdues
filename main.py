@@ -180,8 +180,16 @@ def explore_location(player: Player, data: dict):
             return
     else:
         console.print("\n[bold yellow]Ce lieu est sans ennemi![/bold yellow]")
+    
+    # Récupération des ressources
+    for ressource in data["ressources"]:
+        if ressource["nom"] in location["ressources"]:
+            if ressource["nom"] in player.inventory:
+                player.inventory[ressource["nom"]] += ressource["quantite"]
+            else:
+                player.inventory[ressource["nom"]] = ressource["quantite"]
+            console.print(f"  [yellow] -> Ta ressource {ressource["nom"].upper()} est : {player.inventory[ressource["nom"]]} pièces")
             
-
 
 def speak_with():
     """
