@@ -25,7 +25,7 @@ def load_game_data(filepath: str) -> dict:
         
     except Exception as e:
         raise RuntimeError(f"Erreur inattendue : {e}")
-
+    
 
 class Player:
     """
@@ -188,7 +188,11 @@ def explore_location(player: Player, data: dict):
                 player.inventory[ressource["nom"]] += ressource["quantite"]
             else:
                 player.inventory[ressource["nom"]] = ressource["quantite"]
-            console.print(f"  [yellow] -> Ta ressource {ressource["nom"].upper()} est : {player.inventory[ressource["nom"]]} pièces")
+            console.print(f"  [yellow] -> Ta ressource {ressource['nom'].upper()} est : {player.inventory[ressource['nom']]} pièces")
+    
+    # Sauvegarder la partie
+    save_game(player)
+    
             
 
 def speak_with():
@@ -214,7 +218,24 @@ def combat(player: Player, force: int, choice: bool) -> str:
             return "gagne"
         return "perdu"
     return "fuir"
-    
+
+
+def save_game(player: Player) -> None:
+    """
+    Sauvegarde l'état du joueur.
+    """
+    data = {
+        "player": {
+            "name": player.name,
+            "health_points": player.health_points,
+            "force": player.force,
+            "explored_locations": list(player.explored_locations),
+            "inventory": player.inventory
+            }
+        }
+    with open("save.json", "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4)
+
 
 if __name__ == "__main__":
     main()
