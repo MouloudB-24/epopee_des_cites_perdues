@@ -44,3 +44,5 @@ python main.py
 - Tests unitaires
 - Découpage en modules
 
+
+!["Menu principal"](image.png)
