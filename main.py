@@ -130,7 +130,7 @@ def start_game() -> None:
             explore_location(player, data)
         
         elif choice == 2:
-            speak_with()
+            speak_with(data, player)
         
         elif choice == 3:
             show_player_state(player)
@@ -207,12 +207,26 @@ def explore_location(player: Player, data: dict):
     save_game(player)
     
             
-
-def speak_with():
+def speak_with(data: dict, player: Player):
     """
     Parler avec une personne.
     """
-    pass
+    for personnage in data["personnages"]:
+        if personnage["type"] == "allié":
+            console.print(f"[yellow]Je n'appelle {personnage["nom"]}[/yellow]")
+            console.print(f"[yellow]{personnage["dialogue"]}[/yellow]")
+            break
+    
+    console.print(f"[yellow]Intéressé ?[/yellow]")
+    console.print(f"    [yellow]1 - Oui[/yellow]")
+    console.print(f"    [yellow]2 - Non[/yellow]")
+    
+    choice = ask_user_for_numeric_value(1, 2)
+    if choice == 1:
+        if player.force >= personnage["force"]:
+            console.print("[yellow] Ok bien! Voici mes conseils ...[/yellow]")
+        else:
+            console.print("[yellow]Buff! Tu n'as pas assez d'Or pour me payer... Désolé je ne t'aide pas ![/yellow]")
 
 
 def show_player_state(player: Player) -> None:
