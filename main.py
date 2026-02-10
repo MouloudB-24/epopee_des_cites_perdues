@@ -91,7 +91,20 @@ def display_game_rules() -> None:
     """
     Affiche les règles du jeu.
     """
-    console.print(f"Voici les règles du jeu...")
+    console.print("[bold yellow]RÈGLES DU JEU[/bold yellow]")
+    
+    console.print("[bold yellow]Bienvenue explorateur ![/bold yellow]\n")
+    
+    console.print("[yellow]Ton objectif est de redonner vie aux cités perdues en explorant[/yellow]")
+    console.print("[yellow]des lieux mystérieux, en affrontant des dangers et en récupérant[/yellow]")
+    console.print("[yellow]des ressources précieuses.[/yellow]\n")
+    
+    console.print("[bold yellow]Règles importantes :[/bold yellow]")
+    console.print("  [yellow]• Chaque lieu ne peut être exploré qu'une seule fois[/yellow]")
+    console.print("  [yellow]• Certains lieux sont protégés par des ennemis[/yellow]")
+    console.print("  [yellow]• Un lieu doit être sécurisé pour pouvoir en exploiter les ressources[/yellow]\n")
+    
+    console.print("[bold yellow]Bonne chance![/bold yellow]")
 
 
 def start_game() -> None:
@@ -99,7 +112,7 @@ def start_game() -> None:
     Commence une nouvelle partie du jeu.
     """    
     name = Prompt.ask("[bold green]\nEntrez votre nom[/bold green]")
-    console.print(f"[yellow]Bonne change! {name}[/yellow]")
+    console.print(f"[yellow]Amuse bien! {name}[/yellow]")
     
     data = load_game_data("data.json")
     player = Player(name)
