@@ -1,0 +1,28 @@
+{
+    "lieux": [
+        {"nom": "Temple Oublié", "description": "Un temple envahi par la végétation", "ressources": ["or", "pierres"], "ennemis": ["Serpent Géant"]},
+        {"nom": "Forêt Maudite", "description": "Une forêt sombre et mystérieuse", "ressources": ["bois", "herbes"], "ennemis": ["Loup Spectral"]},
+        {"nom": "Caverne des Âmes", "description": "Une grotte humide résonnant de murmures étranges", "ressources": ["cristaux", "eau"], "ennemis": ["Golem de Pierre"]},
+        {"nom": "Ruines du Palais", "description": "Les vestiges d'un palais royal autrefois majestueux", "ressources": ["or", "artefacts"], "ennemis": []},
+        {"nom": "Désert des Mirages", "description": "Un désert brûlant où la réalité se déforme", "ressources": ["pierres précieuses", "sable magique"], "ennemis": ["Scorpion Géant"]}
+    ],
+    "personnages": [
+        {"nom": "Arwen", "type": "allié", "force": 5, "dialogue": "Je peux t'aider à explorer, mais il me faut 10 unités d'or."},
+        {"nom": "Serpent Géant", "type": "ennemi", "force": 2, "dialogue": "Sssss... Tu ne passeras pas !"},
+        {"nom": "Loup Spectral", "type": "ennemi", "force": 6, "dialogue": "Grrrr... Ces terres sont les miennes !"},
+        {"nom": "Golem de Pierre", "type": "ennemi", "force": 10, "dialogue": "..."},
+        {"nom": "Scorpion Géant", "type": "ennemi", "force": 7, "dialogue": "Le désert réclame ton âme, voyageur !"},
+        {"nom": "Marchand Errant", "type": "allié", "force": 2, "dialogue": "J'échange des ressources contre des cristaux. Intéressé ?"}
+    ],
+    "ressources": [
+        {"nom": "or", "quantite": 20, "utilite": "Acheter de l'aide"},
+        {"nom": "bois", "quantite": 10, "utilite": "Construire des abris"},
+        {"nom": "pierres", "quantite": 15, "utilite": "Réparer des structures"},
+        {"nom": "herbes", "quantite": 8, "utilite": "Soigner des blessures"},
+        {"nom": "cristaux", "quantite": 5, "utilite": "Échanger avec le marchand"},
+        {"nom": "eau", "quantite": 12, "utilite": "Survivre dans le désert"},
+        {"nom": "artefacts", "quantite": 3, "utilite": "Vendre à prix élevé"},
+        {"nom": "pierres précieuses", "quantite": 6, "utilite": "Monnaie rare"},
+        {"nom": "sable magique", "quantite": 4, "utilite": "Créer des potions"}
+    ]
+}
