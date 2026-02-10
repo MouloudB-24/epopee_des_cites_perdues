@@ -133,7 +133,7 @@ def start_game() -> None:
             speak_with()
         
         elif choice == 3:
-            show_player_state()
+            show_player_state(player)
         
         elif choice == 4:
             console.print("[yellow]Retour au menu principal[/yellow]")
@@ -215,12 +215,28 @@ def speak_with():
     pass
 
 
-def show_player_state():
+def show_player_state(player: Player) -> None:
     """
     Afficher l'état du joueur.
     """
-    pass
-
+    console.print("[bold yellow]Etat du joueur :[/bold yellow]")
+    console.print(f"    [yellow]Nom du joueur : {player.name}[/yellow]")
+    console.print(f"    [yellow]Points de vie : {player.health_points}[/yellow]")
+    console.print(f"    [yellow]Force : {player.force}[/yellow]")
+    console.print(f"    [yellow]Inventaire :[/yellow]")
+    if player.inventory:
+        for key, value in player.inventory.items():
+            console.print(f"\t\t[yellow]- {key}: {value}[/yellow]")
+    else:
+        console.print(f"\t\t[yellow]- aucune ressource disponible[/yellow]")
+        
+    console.print(f"    [yellow]Lieux explorés :[/yellow]")
+    if player.explored_locations:
+        for loc in player.explored_locations:
+            console.print(f"\t\t[yellow]- {loc}[/yellow]")
+    else:
+        console.print(f"\t\t[yellow]- aucun lieu exploré[/yellow]")
+        
 
 def combat(player: Player, force: int, choice: bool) -> str:
     """
